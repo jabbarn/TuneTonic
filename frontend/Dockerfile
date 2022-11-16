@@ -4,12 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn
+RUN npm i
 
 COPY . .
 
-ENV PORT=8080
-
-EXPOSE 8080
-
-CMD ["yarn", "start"]
+CMD ["npm", "run", "qr"]
