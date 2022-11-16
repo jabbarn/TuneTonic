@@ -1,10 +1,10 @@
-FROM node:16-alpine
+FROM node:16-alpine AS dev-envs
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn
+RUN npm
 
 COPY . .
 
@@ -12,4 +12,4 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-CMD ["yarn", "start:dev"]
+CMD ["npm", "start:dev"]
