@@ -1,13 +1,15 @@
-FROM --platform=$BUILDPLATFORM node:lts AS dev-envs
+FROM node:16-alpine
 
-WORKDIR /code
-COPY package.json /code/package.json
-COPY package-lock.json /code/package-lock.json
+WORKDIR /app
 
-RUN npm i
-COPY . /code
+COPY package*.json ./
 
-ENV CI=true
+RUN yarn
+
+COPY . .
+
 ENV PORT=8080
 
-CMD [ "npm", "start" ]
+EXPOSE 8080
+
+CMD ["yarn", "start"]
