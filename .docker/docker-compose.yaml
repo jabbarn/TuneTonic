@@ -7,8 +7,8 @@ services:
     build:
       context: frontend
       target: dev-envs
-    networks:
-      - react-nest
+#     networks:
+#       - react-nest
   nest:
     container_name: backend-nest
     image: paer12/tunetonic-backend-dev
@@ -17,9 +17,9 @@ services:
       target: dev-envs
     ports:
       - 8080:8080
-    networks:
-      - react-nest
-      - nest-mongo
+#     networks:
+#       - react-nest
+#       - nest-mongo
   mongo_db:
     container_name: mongo
     environment:
@@ -30,10 +30,9 @@ services:
       - 27017:27017
     volumes:
       - db-data:/data/db
-    networks:
-      - nest-mongo
-      - mongo-express
-
+#     networks:
+#       - nest-mongo
+#       - mongo-express
   mongo_express:
     container_name: mongo-express
     image: mongo-express
@@ -45,13 +44,13 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rainbow
       - ME_CONFIG_MONGODB_ADMINPASSWORD=unicorn
       - ME_CONFIG_MONGODB_SERVER=mongo_db
-  networks:
-    - mongo-express
+#   networks:
+#     - mongo-express
 volumes:
   db-data:
     driver: local
 
-networks:
-  react-nest: {}
-  nest-mongo: {}
-  mongo-express: {}
+# networks:
+#   react-nest: {}
+#   nest-mongo: {}
+#   mongo-express: {}
