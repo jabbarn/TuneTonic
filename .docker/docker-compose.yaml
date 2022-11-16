@@ -1,7 +1,7 @@
 services:
   react_native:
     container_name: frontend-react
-    image: paer12/tunetonic-frontend
+#     image: paer12/tunetonic-frontend
     ports:
       - 3000:3000
     build:
@@ -11,7 +11,7 @@ services:
 #       - react-nest
   nest:
     container_name: backend-nest
-    image: paer12/tunetonic-backend-dev
+#     image: paer12/tunetonic-backend-dev
     build:
       context: backend
       target: dev-envs
