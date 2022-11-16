@@ -3,7 +3,7 @@ services:
     container_name: frontend-react
 #     image: paer12/tunetonic-frontend
     ports:
-      - 3000:3000
+      - 19000:19000
     build:
       context: frontend
 #       target: dev-envs
