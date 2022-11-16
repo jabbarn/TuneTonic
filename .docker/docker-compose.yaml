@@ -1,16 +1,27 @@
 services:
   react_native:
-    container_name: Frontend-React
+    container_name: frontend-react
     image: paer12/tunetonic-frontend
     ports:
       - 3000:3000
+    build:
+      context: frontend
+      target: dev-envs
+    networks:
+      - react-nest
   nest:
-    container_name: Backend-Nest
+    container_name: backend-nest
     image: paer12/tunetonic-backend-dev
+    build:
+      context: backend
+      target: dev-envs
     ports:
       - 8080:8080
+    networks:
+      - react-nest
+      - nest-mongo
   mongo_db:
-    container_name: Mongo
+    container_name: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=rainbow
       - MONGO_INITDB_ROOT_PASSWORD=unicorn
@@ -19,8 +30,12 @@ services:
       - 27017:27017
     volumes:
       - db-data:/data/db
+    networks:
+      - nest-mongo
+      - mongo-express
+
   mongo_express:
-    container_name: Mongo-Express
+    container_name: mongo-express
     image: mongo-express
     depends_on:
       - mongo_db
@@ -30,6 +45,13 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rainbow
       - ME_CONFIG_MONGODB_ADMINPASSWORD=unicorn
       - ME_CONFIG_MONGODB_SERVER=mongo_db
+  networks:
+    - mongo-express
 volumes:
   db-data:
     driver: local
+
+networks:
+  react-nest: {}
+  nest-mongo: {}
+  mongo-express: {}
