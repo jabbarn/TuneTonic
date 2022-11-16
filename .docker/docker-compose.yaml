@@ -6,7 +6,7 @@ services:
       - 3000:3000
     build:
       context: frontend
-      target: dev-envs
+#       target: dev-envs
 #     networks:
 #       - react-nest
   nest:
@@ -14,7 +14,7 @@ services:
 #     image: paer12/tunetonic-backend-dev
     build:
       context: backend
-      target: dev-envs
+#       target: dev-envs
     ports:
       - 8080:8080
 #     networks:
