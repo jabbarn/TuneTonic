@@ -4,7 +4,7 @@ LABEL version=1.0
 ENV ADB_IP=192.168.1.139
 ENV REACT_NATIVE_HOSTNAME=192.168.1.1
 
-RUN apk update -y && apk add -y android-tools-adb
+RUN apk update && apk add android-tools-adb
 
 WORKDIR /app
 COPY package*.json ./
