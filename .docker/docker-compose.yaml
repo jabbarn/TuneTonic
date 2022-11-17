@@ -7,8 +7,8 @@ services:
       - 19000:19000
     build:
       context: frontend
-    volumes:
-      - ${PWD}/:/app/
+#     volumes:
+#       - ${PWD}/:/app/
   nest:
     container_name: backend-nest
 #     image: paer12/tunetonic-backend-dev
