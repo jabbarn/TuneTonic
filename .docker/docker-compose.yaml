@@ -16,10 +16,10 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./react_native:/opt/react_native/app:delegated
-      - ./react_native/package.json:/opt/react_native/package.json
-      - ./react_native/package-lock.json:/opt/react_native/package-lock.json
-#       - notused:/opt/react_native/app/node_module
+      - ./frontend:/opt/frontend/app:delegated
+      - ./frontend/package.json:/opt/frontend/package.json
+      - ./frontend/package-lock.json:/opt/frontend/package-lock.json
+#       - notused:/opt/react_native/app/node_modules
   nest:
     container_name: backend-nest
 #     image: paer12/tunetonic-backend-dev
