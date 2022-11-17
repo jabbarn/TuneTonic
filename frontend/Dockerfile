@@ -18,7 +18,7 @@ EXPOSE $PORT 19001 19002
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
 
-CMD npm install -g npm@latest
+CMD npm install -g npm@9.1.2
 
 CMD npm install
 
