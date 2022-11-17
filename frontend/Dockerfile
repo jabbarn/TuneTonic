@@ -1,19 +1,14 @@
 FROM node:16-alpine
+LABEL version=1.0
 
-# set our node environment, either development or production
-# defaults to production, compose overrides this to development on build and run
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
+EXPOSE 19000 19001
+ENV ADB_IP=192.168.1.139
+ENV REACT_NATIVE_HOSTNAME=192.168.1.1
+
+RUN apt-get update && apt-get install android-tools-adb
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN yarn
-
-# default to port 19006 for node, and 19001 and 19002 (tests) for debug
-ARG PORT=19006
-ENV PORT $PORT
-EXPOSE $PORT 19001 19002
-
-CMD ["yarn", "start"]
+COPY package.json yarn.lock app.json ./
+RUN yarn --network-timeout 100000
+CMD adb connect $ADB_IP && yarn run android
