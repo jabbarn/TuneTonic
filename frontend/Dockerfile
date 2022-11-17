@@ -14,10 +14,6 @@ ARG PORT=19006
 ENV PORT $PORT
 EXPOSE $PORT 19001 19002
 
-# install global packages
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-ENV PATH /home/node/.npm-global/bin:$PATH
-
 CMD npm install -g npm@9.1.2
 
 CMD npm install
