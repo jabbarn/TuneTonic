@@ -9,7 +9,6 @@ RUN apt-get update -y && apt-get install -y android-tools-adb
 
 WORKDIR /app
 COPY package*.json ./
-RUN yarn
-COPY . .
+RUN npm i
 
-CMD adb connect $ADB_IP && yarn run android
+CMD adb connect $ADB_IP && npm run android
