@@ -5,7 +5,6 @@ FROM node:16-alpine
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
-CMD npm install -g npm@latest
 WORKDIR /app
 
 COPY package*.json ./
@@ -18,6 +17,8 @@ EXPOSE $PORT 19001 19002
 # install global packages
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
+
+CMD npm install -g npm@latest
 
 CMD npm install
 
