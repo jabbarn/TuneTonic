@@ -5,6 +5,7 @@ FROM node:16-alpine
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
+CMD npm install -g npm@9.1.2
 WORKDIR /app
 
 COPY package*.json ./
