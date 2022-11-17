@@ -1,13 +1,11 @@
-FROM node:16-alpine
+FROM node:latest
 LABEL version=1.0
 
 ENV ADB_IP=192.168.1.139
 ENV REACT_NATIVE_HOSTNAME=192.168.1.1
 
-RUN apk update && apk add android-tools-adb
+RUN apt-get update -y && ap-get install -y android-tools-adb
 
-WORKDIR /app
-COPY package*.json ./
 
 EXPOSE 19000 19001
 
