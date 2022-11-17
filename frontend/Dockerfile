@@ -15,17 +15,9 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
 RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
-# install dependencies first, in a different location for easier app bind mounting for local development
-# due to default /opt permissions we have to create the dir with root and change perms
-RUN mkdir /opt/frontend && chown node:node /opt/frontend
-WORKDIR /opt/frontend
-ENV PATH /opt/frontend/.bin:$PATH
-USER node
-COPY ./frontend/package.json ./frontend/package-lock.json ./
 RUN npm install
 
 # copy in our source code last, as it changes the most
-WORKDIR /opt/frontend/app
 # for development, we bind mount volumes; comment out for production
 # COPY ./react_native_app .
 
