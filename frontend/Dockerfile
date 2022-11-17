@@ -17,15 +17,15 @@ RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
 # install dependencies first, in a different location for easier app bind mounting for local development
 # due to default /opt permissions we have to create the dir with root and change perms
-RUN mkdir /opt/react_native_app && chown node:node /opt/react_native_app
-WORKDIR /opt/react_native_app
-ENV PATH /opt/react_native_app/.bin:$PATH
+RUN mkdir /opt/react_native && chown node:node /opt/react_native
+WORKDIR /opt/react_native
+ENV PATH /opt/react_native/.bin:$PATH
 USER node
-COPY ./react_native_app/package.json ./react_native_app/package-lock.json ./
+COPY ./react_native/package.json ./react_native/package-lock.json ./
 RUN npm install
 
 # copy in our source code last, as it changes the most
-WORKDIR /opt/react_native_app/app
+WORKDIR /opt/react_native/app
 # for development, we bind mount volumes; comment out for production
 # COPY ./react_native_app .
 
