@@ -9,17 +9,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN yarn
+
 # default to port 19006 for node, and 19001 and 19002 (tests) for debug
 ARG PORT=19006
 ENV PORT $PORT
 EXPOSE $PORT 19001 19002
 
-CMD npm install -g npm@9.1.2
-
-CMD npm install
-
-# copy in our source code last, as it changes the most
-# for development, we bind mount volumes; comment out for production
-# COPY ./react_native_app .
-
-CMD npx expo start -c
+CMD ["yarn", "start"]
