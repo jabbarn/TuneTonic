@@ -13,7 +13,6 @@ EXPOSE $PORT 19001 19002
 # install global packages
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
-RUN npm i --unsafe-perm -g npm@latest expo-cli@latest
 
 RUN npm install
 
