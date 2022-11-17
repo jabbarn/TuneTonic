@@ -24,5 +24,4 @@ CMD npm install
 # for development, we bind mount volumes; comment out for production
 # COPY ./react_native_app .
 
-ENTRYPOINT ["npm", "run"]
-CMD ["start"]
+CMD npx expo start -c
