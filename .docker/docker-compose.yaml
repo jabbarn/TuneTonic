@@ -19,7 +19,7 @@ services:
       - ./react_native:/opt/react_native/app:delegated
       - ./react_native/package.json:/opt/react_native/package.json
       - ./react_native/package-lock.json:/opt/react_native/package-lock.json
-      - notused:/opt/react_native/app/node_module
+#       - notused:/opt/react_native/app/node_module
   nest:
     container_name: backend-nest
 #     image: paer12/tunetonic-backend-dev
@@ -58,7 +58,7 @@ services:
 #   networks:
 #     - mongo-express
 volumes:
-  not-used:
+#   not-used:
   db-data:
     driver: local
 
