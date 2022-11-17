@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:latest
 LABEL version=1.0
 
 EXPOSE 19000 19001
