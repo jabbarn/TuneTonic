@@ -5,7 +5,7 @@ EXPOSE 19000 19001
 ENV ADB_IP=192.168.1.139
 ENV REACT_NATIVE_HOSTNAME=192.168.1.1
 
-RUN apt-get update && apt-get install android-tools-adb
+RUN apt-get update -y && apt-get install -y android-tools-adb
 
 WORKDIR /app
 
